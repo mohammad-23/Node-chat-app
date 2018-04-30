@@ -16,12 +16,32 @@ function scrollToBottom() {
 };
 
 socket.on('connect', function () {
+    var params = jQuery.deparam(window.location.search);
+    
+    socket.emit('join', params, function(err) {
+        if(err) {
+            alert(err);
+            window.location.href = '/';
+        } else {
+            console.log('No error');
+        }
+    })
     console.log('Connected to server');
 });
 
 
 socket.on('disconnect', function () {
     console.log('Disconnected from server');
+});
+
+socket.on('updateUserList', function (users) {
+   var ol = jQuery('<ol></ol>');
+    
+   users.forEach(function (user) {
+      ol.append(jQuery('<li></li>').text(user)); 
+   });
+   
+   jQuery('#Users').html(ol);
 });
 
 socket.on('newMessage', function (message) {
@@ -60,6 +80,7 @@ jQuery('#message-form').on('submit', function (e) {
     });
 });
 
+//SEND LOCATION
 var locationButton = jQuery('#send-location');
 locationButton.on('click', function () {
     if (!navigator.geolocation) {
