@@ -14,14 +14,15 @@ button:hover {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", "sans-serif";
     font-weight: 300;
     font-size: .95rem
 }
 
 li,
 ul {
-    list-style-position: inside
+    list-style-position: inside;
+    list-style-type: none;
 }
 
 h3 {
