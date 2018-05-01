@@ -62,6 +62,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, function () {
+server.listen(port, function () {
     console.log(`Server up on port ${port}`);
 });
